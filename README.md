@@ -97,5 +97,4 @@ export default MyComponent;
 
 ```
 Este componente simple muestra el estado actual y proporciona un botón que, al hacer clic, cambia el estado y actualiza la interfaz de usuario.
-
-###GRACIAS
+### GRACIAS
