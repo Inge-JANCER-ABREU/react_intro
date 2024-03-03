@@ -61,41 +61,39 @@ Manipula objetos a través de la interfaz del componente.
 Trata tanto a las hojas como a los compuestos de manera uniforme.
 
 # patrón de diseño estructural State
-l patrón de diseño estructural llamado "State" es un patrón que se utiliza para permitir que un objeto cambie su comportamiento cuando su estado interno cambia. Este patrón se centra en la gestión de los estados internos de un objeto y la transición entre estos estados. Al utilizar el patrón State, un objeto puede parecer cambiar de clase en tiempo de ejecución.
+El patrón de diseño estructural llamado "State" es un patrón que se utiliza para permitir que un objeto cambie su comportamiento cuando su estado interno cambia. Este patrón se centra en la gestión de los estados internos de un objeto y la transición entre estos estados. Al utilizar el patrón State, un objeto puede parecer cambiar de clase en tiempo de ejecución.
 
 En el contexto de React, el patrón de diseño State se relaciona con la gestión del estado en los componentes. En React, el estado es un objeto que representa cómo debería renderizarse un componente y cómo debería comportarse. Cuando el estado de un componente cambia, React se encarga de volver a renderizar el componente para reflejar ese cambio en la interfaz de usuario.
-// Importa la biblioteca React
+```
+# Ejemplo de Uso del Patrón State en React
+
+En React, el patrón de diseño State es crucial para la gestión del estado en los componentes. Aquí hay un ejemplo simple de cómo implementar el patrón State en un componente de React:
+
+```jsx
 import React, { Component } from 'react';
 
-// Define un componente de ejemplo llamado MyComponent
 class MyComponent extends Component {
-  // Inicializa el estado del componente
   state = {
-    // Define una propiedad en el estado llamada 'estadoActual' con el valor inicial 'Inicial'
     estadoActual: 'Inicial'
   };
 
-  // Método para manejar un evento que cambia el estado
   handleCambioEstado = () => {
-    // Cambia el estado utilizando el método setState
     this.setState({
       estadoActual: 'Modificado'
     });
   };
 
-  // Renderiza el componente
   render() {
     return (
       <div>
-        {/* Muestra el estado actual */}
         <p>Estado Actual: {this.state.estadoActual}</p>
-        
-        {/* Botón que, al hacer clic, invoca el método handleCambioEstado */}
         <button onClick={this.handleCambioEstado}>Cambiar Estado</button>
       </div>
     );
   }
 }
 
-// Exporta el componente para poder utilizarlo en otras partes de la aplicación
 export default MyComponent;
+
+```
+Este componente simple muestra el estado actual y proporciona un botón que, al hacer clic, cambia el estado y actualiza la interfaz de usuario.
