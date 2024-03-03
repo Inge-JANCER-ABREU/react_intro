@@ -61,59 +61,41 @@ Manipula objetos a través de la interfaz del componente.
 Trata tanto a las hojas como a los compuestos de manera uniforme.
 
 # patrón de diseño estructural State
-El patrón de diseño estructural llamado "State" (estado, en español) pertenece a la categoría de patrones de diseño que se centran en la composición de clases y objetos. Este patrón tiene como objetivo permitir que un objeto modifique su comportamiento cuando su estado interno cambia. Esto se logra representando los diferentes estados como clases y permitiendo que el objeto cambie de clase a medida que cambia su estado.
-Patrón de Diseño State:
-Objetivo:
-Permite que un objeto altere su comportamiento cuando su estado interno cambia. El objeto aparecerá como si cambiara de clase.
+l patrón de diseño estructural llamado "State" es un patrón que se utiliza para permitir que un objeto cambie su comportamiento cuando su estado interno cambia. Este patrón se centra en la gestión de los estados internos de un objeto y la transición entre estos estados. Al utilizar el patrón State, un objeto puede parecer cambiar de clase en tiempo de ejecución.
 
-Participantes Principales:
-Contexto (Context): Es el objeto que tiene un estado interno que puede cambiar. Mantiene una referencia a una instancia de un objeto de estado concreto.
+En el contexto de React, el patrón de diseño State se relaciona con la gestión del estado en los componentes. En React, el estado es un objeto que representa cómo debería renderizarse un componente y cómo debería comportarse. Cuando el estado de un componente cambia, React se encarga de volver a renderizar el componente para reflejar ese cambio en la interfaz de usuario.
+// Importa la biblioteca React
+import React, { Component } from 'react';
 
-Estado (State): Es una interfaz o clase abstracta que define una interfaz para los estados específicos que implementarán el comportamiento asociado con un estado particular.
+// Define un componente de ejemplo llamado MyComponent
+class MyComponent extends Component {
+  // Inicializa el estado del componente
+  state = {
+    // Define una propiedad en el estado llamada 'estadoActual' con el valor inicial 'Inicial'
+    estadoActual: 'Inicial'
+  };
 
-Estado Concreto (Concrete State): Implementa la interfaz del Estado y proporciona la implementación específica del comportamiento asociado con el estado.
+  // Método para manejar un evento que cambia el estado
+  handleCambioEstado = () => {
+    // Cambia el estado utilizando el método setState
+    this.setState({
+      estadoActual: 'Modificado'
+    });
+  };
 
-Estructura:
-El Contexto mantiene una referencia a un objeto Estado y delega el trabajo relacionado con el estado a este objeto.
-Se tienen clases Estado Concreto que implementan la interfaz Estado y proporcionan la implementación específica del comportamiento para cada estado.
-Ventajas:
-Facilita la adición de nuevos estados sin modificar el código existente.
-Promueve el principio de diseño de "abiertos/cerrados" (open/closed), ya que se pueden agregar nuevos estados sin modificar el código del Contexto.
-# Interfaz Estado
-class State:
-    def handle(self):
-        pass
+  // Renderiza el componente
+  render() {
+    return (
+      <div>
+        {/* Muestra el estado actual */}
+        <p>Estado Actual: {this.state.estadoActual}</p>
+        
+        {/* Botón que, al hacer clic, invoca el método handleCambioEstado */}
+        <button onClick={this.handleCambioEstado}>Cambiar Estado</button>
+      </div>
+    );
+  }
+}
 
-# Estados Concretos
-class ConcreteStateA(State):
-    def handle(self):
-        print("Estado A")
-
-class ConcreteStateB(State):
-    def handle(self):
-        print("Estado B")
-
-# Contexto
-class Context:
-    def __init__(self, state):
-        self._state = state
-
-    def request(self):
-        self._state.handle()
-
-    def set_state(self, state):
-        self._state = state
-
-# Uso del patrón
-stateA = ConcreteStateA()
-stateB = ConcreteStateB()
-
-context = Context(stateA)
-context.request()  # Salida: Estado A
-
-context.set_state(stateB)
-context.request()  # Salida: Estado B
-
-
-
-
+// Exporta el componente para poder utilizarlo en otras partes de la aplicación
+export default MyComponent;
