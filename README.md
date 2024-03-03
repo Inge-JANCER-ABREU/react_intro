@@ -44,16 +44,14 @@ El estado es un objeto que contiene datos importantes para un componente. A dife
 El patrón de diseño estructural Composite se utiliza para componer objetos en estructuras de árbol para representar jerarquías parte-todo. Este patrón permite a los clientes tratar tanto a los objetos individuales como a las composiciones de objetos de manera uniforme. De esta manera, el Composite facilita la creación de estructuras complejas y anidadas, al tiempo que proporciona una interfaz consistente.
 
 Componente (Component):
-
 Define la interfaz común para todos los componentes (hojas y compuestos).
 Declara las operaciones que deben ser implementadas tanto por las hojas como por los compuestos.
-Hoja (Leaf):
 
-Representa los nodos finales de la estructura del árbol.
+Hoja (Leaf):Representa los nodos finales de la estructura del árbol.
 Implementa la interfaz del componente.
 No tiene hijos.
-Compuesto (Composite):
 
+Compuesto (Composite):
 Define el comportamiento que se aplica a los componentes hijos.
 Almacena componentes hijos.
 Puede implementar operaciones adicionales específicas de la composición.
@@ -61,4 +59,61 @@ Cliente (Client):
 
 Manipula objetos a través de la interfaz del componente.
 Trata tanto a las hojas como a los compuestos de manera uniforme.
+
+# patrón de diseño estructural State
+El patrón de diseño estructural llamado "State" (estado, en español) pertenece a la categoría de patrones de diseño que se centran en la composición de clases y objetos. Este patrón tiene como objetivo permitir que un objeto modifique su comportamiento cuando su estado interno cambia. Esto se logra representando los diferentes estados como clases y permitiendo que el objeto cambie de clase a medida que cambia su estado.
+Patrón de Diseño State:
+Objetivo:
+Permite que un objeto altere su comportamiento cuando su estado interno cambia. El objeto aparecerá como si cambiara de clase.
+
+Participantes Principales:
+Contexto (Context): Es el objeto que tiene un estado interno que puede cambiar. Mantiene una referencia a una instancia de un objeto de estado concreto.
+
+Estado (State): Es una interfaz o clase abstracta que define una interfaz para los estados específicos que implementarán el comportamiento asociado con un estado particular.
+
+Estado Concreto (Concrete State): Implementa la interfaz del Estado y proporciona la implementación específica del comportamiento asociado con el estado.
+
+Estructura:
+El Contexto mantiene una referencia a un objeto Estado y delega el trabajo relacionado con el estado a este objeto.
+Se tienen clases Estado Concreto que implementan la interfaz Estado y proporcionan la implementación específica del comportamiento para cada estado.
+Ventajas:
+Facilita la adición de nuevos estados sin modificar el código existente.
+Promueve el principio de diseño de "abiertos/cerrados" (open/closed), ya que se pueden agregar nuevos estados sin modificar el código del Contexto.
+# Interfaz Estado
+class State:
+    def handle(self):
+        pass
+
+# Estados Concretos
+class ConcreteStateA(State):
+    def handle(self):
+        print("Estado A")
+
+class ConcreteStateB(State):
+    def handle(self):
+        print("Estado B")
+
+# Contexto
+class Context:
+    def __init__(self, state):
+        self._state = state
+
+    def request(self):
+        self._state.handle()
+
+    def set_state(self, state):
+        self._state = state
+
+# Uso del patrón
+stateA = ConcreteStateA()
+stateB = ConcreteStateB()
+
+context = Context(stateA)
+context.request()  # Salida: Estado A
+
+context.set_state(stateB)
+context.request()  # Salida: Estado B
+
+
+
 
