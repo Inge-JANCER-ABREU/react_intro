@@ -28,3 +28,37 @@ Definición: Las optimizaciones en React implican técnicas para mejorar el rend
 Definición: TypeScript es un superconjunto de JavaScript que agrega tipado estático a la sintaxis de JavaScript. Al utilizar TypeScript con React, se pueden definir tipos para los props y el estado de los componentes, proporcionando así una capa adicional de seguridad y herramientas de desarrollo mejoradas.
 Estos términos representan diferentes aspectos de desarrollo al trabajar con React y se utilizan para describir y abordar diferentes partes de la construcción de una aplicación web.
 
+### Componentes (Components):
+Los componentes son bloques de construcción fundamentales en React. Representan partes reutilizables e independientes de la interfaz de usuario. Pueden contener tanto la lógica como la interfaz de usuario, y se pueden componer para construir aplicaciones más grandes. Los componentes en React pueden ser funcionales o basados en clases.
+
+### JSX (JavaScript XML):
+JSX es una extensión de sintaxis para JavaScript que permite escribir código que se parece al marcado HTML/XML. Facilita la definición de la interfaz de usuario en React de una manera más declarativa y legible. Aunque se asemeja al HTML, JSX se compila a llamadas de funciones de JavaScript y se utiliza para definir la estructura de los componentes React.
+
+### Props (Propiedades):
+Las propiedades son datos que se pasan de un componente padre a un componente hijo en React. Permiten la comunicación entre componentes y son inmutables, lo que significa que un componente hijo no puede modificar directamente las propiedades que recibe. Las props son una forma eficaz de pasar datos y configurar componentes de manera dinámica.
+
+### Estado (State):
+El estado es un objeto que contiene datos importantes para un componente. A diferencia de las props, el estado es mutable y se utiliza para gestionar información que puede cambiar durante la vida útil de un componente. Cuando el estado de un componente cambia, React se encarga de actualizar automáticamente la interfaz de usuario para reflejar esos cambios.
+
+# patrón de diseño estructural Composite
+El patrón de diseño estructural Composite se utiliza para componer objetos en estructuras de árbol para representar jerarquías parte-todo. Este patrón permite a los clientes tratar tanto a los objetos individuales como a las composiciones de objetos de manera uniforme. De esta manera, el Composite facilita la creación de estructuras complejas y anidadas, al tiempo que proporciona una interfaz consistente.
+
+Componente (Component):
+
+Define la interfaz común para todos los componentes (hojas y compuestos).
+Declara las operaciones que deben ser implementadas tanto por las hojas como por los compuestos.
+Hoja (Leaf):
+
+Representa los nodos finales de la estructura del árbol.
+Implementa la interfaz del componente.
+No tiene hijos.
+Compuesto (Composite):
+
+Define el comportamiento que se aplica a los componentes hijos.
+Almacena componentes hijos.
+Puede implementar operaciones adicionales específicas de la composición.
+Cliente (Client):
+
+Manipula objetos a través de la interfaz del componente.
+Trata tanto a las hojas como a los compuestos de manera uniforme.
+
